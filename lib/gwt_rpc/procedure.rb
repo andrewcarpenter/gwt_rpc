@@ -8,9 +8,8 @@ class GwtRpc::Procedure
     @identifier = options[:identifier] or raise ":identifier must be provided"
   end
   
-  def call(client, parameters = [])
-    request = GwtRpc::Request.new(client, self, parameters)
+  def call(client, *parameters)
+    request = GwtRpc::Request.new(client, self, *parameters)
     response = request.call
-    # response.deserialize
   end
 end

@@ -1,0 +1,19 @@
+class GwtRpc::Error < Exception; end
+class GwtRpc::Error::ServerError < GwtRpc::Error; end
+class GwtRpc::Error::NoResponse < GwtRpc::Error; end
+
+class GwtRpc::Response
+  def initialize(procedure, raw_response)
+    @procedure    = procedure
+    @raw_response = raw_response
+    
+    raise GwtRpc::Error::NoResponse.new("Error: no response to request") if @raw_response.code == 0
+    raise GwtRpc::Error::ServerError.new("Error: status code #{@raw_response.code} not 200") if @raw_response.code != 200
+    raise GwtRpc::Error::ServerError.new("Error: #{@raw_response.body}") if @raw_response.body !~ /^OK\/\//
+  end
+  
+  def content
+    json_body = @raw_response.body.sub(/^OK\/\//,'')
+    GwtRpc::Response::Reader.new(@procedure.client, json_body)
+  end
+end

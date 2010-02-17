@@ -6,17 +6,12 @@ class GwtRpc::Request
   end
   
   def call
-    # raise body
-    # raise url
     response = Typhoeus::Request.post(url,
           :body          => body,
           :headers       => {'Content-Type' => "text/x-gwt-rpc; charset=utf-8"},
           :timeout       => 1000,
           :cache_timeout => 60)
-    response.code    # http status code
-    response.time    # time in seconds the request took
-    response.headers # the http headers
-    raise [response.code, response.body, response.headers].inspect    # the response body
+    GwtRpc::Response.new(@procedure, response)
   end
   
   def url

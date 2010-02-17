@@ -49,5 +49,6 @@ class GwtRpc::Client
     subclass.map_classes @class_map
   end
   
-  map_classes "java.lang.String" => "String"
+  map_classes "java.lang.String"    => "String",
+              "java.util.ArrayList" => "Array"
 end

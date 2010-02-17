@@ -13,11 +13,11 @@ class RegulationsDotGovClient < GwtRpc::Client
                 :namespace  => 'gov.egov.erule.gwt.module.regs.client.service.DocumentDetailService',
                 :method     => 'getDocumentDetails'
   
-  add_procedure :search_documents,
-                :path       => '/search/Regs/searchResults',
-                :identifier => 'AB0B7193CC1148EFEEB8D5771D3EBF33',
-                :namespace  => 'gov.egov.erule.gwt.module.regs.client.service.SearchResultsService',
-                :method     => 'getSearchResultsByRelevance'
+  # add_procedure :search_documents,
+  #               :path       => '/search/Regs/searchResults',
+  #               :identifier => 'AB0B7193CC1148EFEEB8D5771D3EBF33',
+  #               :namespace  => 'gov.egov.erule.gwt.module.regs.client.service.SearchResultsService',
+  #               :method     => 'getSearchResultsByRelevance'
 end
 
 client = RegulationsDotGovClient.new

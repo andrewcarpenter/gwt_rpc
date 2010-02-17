@@ -21,6 +21,7 @@ describe GwtRpc::Client do
   describe "default class mapping" do
     it "should define string" do
       @subclass.java_class_to_ruby("java.lang.String").should == "String"
+      @subclass.java_class_to_ruby("java.util.ArrayList").should == "Array"
     end
   end
   
