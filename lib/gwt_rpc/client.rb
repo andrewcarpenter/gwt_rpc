@@ -50,5 +50,6 @@ class GwtRpc::Client
   end
   
   map_classes "java.lang.String"    => "String",
-              "java.util.ArrayList" => "Array"
+              "java.util.ArrayList" => "Array",
+              "java.util.HashMap"   => "Hash"
 end

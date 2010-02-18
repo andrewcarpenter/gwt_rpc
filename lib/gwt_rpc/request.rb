@@ -11,7 +11,7 @@ class GwtRpc::Request
           :headers       => {'Content-Type' => "text/x-gwt-rpc; charset=utf-8"},
           :timeout       => 1000,
           :cache_timeout => 60)
-    GwtRpc::Response.new(@procedure, response)
+    GwtRpc::Response.new(@procedure, @client, response).content
   end
   
   def url
@@ -44,7 +44,7 @@ class GwtRpc::Request
   end
   
   def parameter_values
-    @parameters.map{|p| p.gwt_serialize }
+    @parameters.map{|p| p.class.gwt_serialize(p) }
   end
   
   def stringtablize(data)

@@ -45,13 +45,14 @@ describe GwtRpc::Response::Reader do
       lambda { @reader.read_string(4) }.should raise_error
     end
   end
+  
   describe ".read_object" do
     it "should call .gwt_deserialize on the appropriate class" do
       Array.should_receive(:gwt_deserialize)
       @reader.read_object
     end
-    it "should return the extracted data structure"# do
-    #   @reader.read_object.should == ["Hello", "World"]
-    # end
+    it "should return the extracted data structure" do
+      @reader.read_object.should == ["Hello", "World"]
+    end
   end
 end

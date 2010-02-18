@@ -22,6 +22,7 @@ describe GwtRpc::Client do
     it "should define string" do
       @subclass.java_class_to_ruby("java.lang.String").should == "String"
       @subclass.java_class_to_ruby("java.util.ArrayList").should == "Array"
+      @subclass.java_class_to_ruby("java.util.HashMap").should == "Hash"
     end
   end
   

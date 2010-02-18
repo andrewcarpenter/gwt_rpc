@@ -19,8 +19,8 @@ describe GwtRpc::Procedure do
     it "should return a response" do
       client = GwtRpc::Client.new
       client.domain 'http://www.example.com'
-      Typhoeus::Request.should_receive(:post).and_return(Typhoeus::Response.new(:code => 200, :body => "OK//123"))
-      GwtRpc::Procedure.new(required_options).call(client).should be_a(GwtRpc::Response)
+      Typhoeus::Request.should_receive(:post).and_return(Typhoeus::Response.new(:code => 200, :body => '//OK[2,1,["java.lang.String","Howdy"],0,5]'))
+      GwtRpc::Procedure.new(required_options).call(client).should == "Howdy"
     end
   end
 end

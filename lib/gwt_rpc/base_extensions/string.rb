@@ -1,7 +1,11 @@
 module GwtRpc::BaseExtensions::String
-  def gwt_serialize
-    self
+  def gwt_serialize(str)
+    str
+  end
+  
+  def gwt_deserialize(reader)
+    reader.read_string
   end
 end
 
-String.send(:include, GwtRpc::BaseExtensions::String)
+String.send(:extend, GwtRpc::BaseExtensions::String)

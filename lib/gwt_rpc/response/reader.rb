@@ -10,8 +10,8 @@ class GwtRpc::Response::Reader
     @data.shift
   end
   
-  def read_string(position=read_int, lax=false)
-    if position > (@max_prior_string_location + 1) and !lax
+  def read_string(position=read_int)
+    if position > (@max_prior_string_location + 1)
       raise "trying to read #{position}, which is too far ahead; max seen thus far is #{@max_prior_string_location}!"
     end
     

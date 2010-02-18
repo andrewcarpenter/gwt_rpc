@@ -14,4 +14,6 @@ require "gwt_rpc/request"
 require "gwt_rpc/response"
 require "gwt_rpc/response/reader"
 
+require "gwt_rpc/base_extensions/array"
+require "gwt_rpc/base_extensions/hash"
 require "gwt_rpc/base_extensions/string"
