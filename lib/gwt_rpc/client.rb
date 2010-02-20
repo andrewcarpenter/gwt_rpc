@@ -52,6 +52,7 @@ class GwtRpc::Client
   map_classes "java.lang.String"                                  => "String",
               "java.util.ArrayList"                               => "Array",
               "java.util.HashMap"                                 => "Hash",
+              "com.extjs.gxt.ui.client.data.RpcMap"               => "GwtRpc::Gxt::Hash",
               "com.extjs.gxt.ui.client.Style$SortDir"             => "GwtRpc::Gxt::SortDir",
               "com.extjs.gxt.ui.client.data.SortInfo"             => "GwtRpc::Gxt::SortInfo",
               "com.extjs.gxt.ui.client.data.BasePagingLoadResult" => "GwtRpc::Gxt::PaginatedResultset"
