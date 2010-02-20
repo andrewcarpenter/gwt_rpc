@@ -4,6 +4,7 @@ class GwtRpc::Response::Reader
     @client = client
     (@version, placeholder, @string_table, *@data) = JSON.parse(json_body).reverse
     @max_prior_string_location = 0
+    @objects = []
   end
   
   def read_int
@@ -25,10 +26,10 @@ class GwtRpc::Response::Reader
   def read_object
     int = read_int
     
-    # if int < 0
-    #   obj = @objects[0-int]
-    #   log "reading from history#{int}: '#{obj}' #{@objects.inspect}"
-    # elsif int > 0
+    if int < 0
+      obj = @objects[0-int]
+      # log "reading from history#{int}: '#{obj}' #{@objects.inspect}"
+    elsif int > 0
       java_class = read_string(int)
       java_class.sub!(/\/\d+$/,'')
       
@@ -40,10 +41,10 @@ class GwtRpc::Response::Reader
         raise "unknown java class '#{java_class}'"
       end
       
-      # @objects << obj
-    # elsif int == 0
-    #   obj = nil
-    # end
+      @objects << obj
+    elsif int == 0
+      obj = nil
+    end
     obj
   end
 end

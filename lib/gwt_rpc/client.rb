@@ -52,6 +52,8 @@ class GwtRpc::Client
   map_classes "java.lang.String"                                  => "String",
               "java.util.ArrayList"                               => "Array",
               "java.util.HashMap"                                 => "Hash",
+              "java.lang.Boolean"                                 => "GwtRpc::BaseExtensions::Boolean",
+              "[Ljava.lang.String;"                               => "GwtRpc::BaseExtensions::MultipartString",
               "com.extjs.gxt.ui.client.data.RpcMap"               => "GwtRpc::Gxt::Hash",
               "com.extjs.gxt.ui.client.Style$SortDir"             => "GwtRpc::Gxt::SortDir",
               "com.extjs.gxt.ui.client.data.SortInfo"             => "GwtRpc::Gxt::SortInfo",

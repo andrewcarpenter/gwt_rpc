@@ -23,6 +23,8 @@ describe GwtRpc::Client do
       @subclass.java_class_to_ruby("java.lang.String").should == "String"
       @subclass.java_class_to_ruby("java.util.ArrayList").should == "Array"
       @subclass.java_class_to_ruby("java.util.HashMap").should == "Hash"
+      @subclass.java_class_to_ruby("java.lang.Boolean").should == "GwtRpc::BaseExtensions::Boolean"
+      @subclass.java_class_to_ruby("[Ljava.lang.String;").should == "GwtRpc::BaseExtensions::MultipartString"
       @subclass.java_class_to_ruby("com.extjs.gxt.ui.client.data.RpcMap").should == "GwtRpc::Gxt::Hash"
       @subclass.java_class_to_ruby("com.extjs.gxt.ui.client.Style$SortDir").should == "GwtRpc::Gxt::SortDir"
       @subclass.java_class_to_ruby("com.extjs.gxt.ui.client.data.SortInfo").should == "GwtRpc::Gxt::SortInfo"
