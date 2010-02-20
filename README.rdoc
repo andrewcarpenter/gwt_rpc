@@ -1,6 +1,6 @@
 = gwt_rpc
 
-Description goes here.
+Ruby GWT client. More details to come. Pre-alpha.
 
 == Note on Patches/Pull Requests
  
