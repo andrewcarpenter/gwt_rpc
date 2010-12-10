@@ -1,11 +1,20 @@
 module GwtRpc::BaseExtensions::String
-  def gwt_serialize(str)
-    str
+  def self.included(base)
+    base.send(:extend, ClassMethods)
+    base.send(:include, InstanceMethods)
   end
   
-  def gwt_deserialize(reader)
-    reader.read_string
+  module InstanceMethods
+    def gwt_serialize
+      self
+    end
+  end
+  
+  module ClassMethods
+    def gwt_deserialize(reader)
+      reader.read_string
+    end
   end
 end
 
-String.send(:extend, GwtRpc::BaseExtensions::String)
+String.send(:include, GwtRpc::BaseExtensions::String)

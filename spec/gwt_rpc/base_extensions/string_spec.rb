@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe GwtRpc::BaseExtensions::String do
   describe ".gwt_serialize" do
     it "should return itself" do
-      String.gwt_serialize("foo").should == "foo"
+      "foo".gwt_serialize.should == "foo"
     end
   end
   

@@ -44,7 +44,7 @@ class GwtRpc::Request
   end
   
   def parameter_values
-    @parameters.map{|p| p.class.gwt_serialize(p) }
+    @parameters.map{|p| p.gwt_serialize }
   end
   
   def stringtablize(data)
