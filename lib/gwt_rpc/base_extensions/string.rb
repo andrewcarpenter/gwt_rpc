@@ -6,7 +6,7 @@ module GwtRpc::BaseExtensions::String
   
   module InstanceMethods
     def gwt_serialize
-      self
+      [self]
     end
   end
   
