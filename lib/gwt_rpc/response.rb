@@ -3,8 +3,7 @@ class GwtRpc::Error::ServerError < GwtRpc::Error; end
 class GwtRpc::Error::NoResponse < GwtRpc::Error; end
 
 class GwtRpc::Response
-  def initialize(procedure, client, raw_response)
-    @procedure    = procedure
+  def initialize(client, raw_response)
     @client       = client
     @raw_response = raw_response
     

@@ -18,8 +18,11 @@ require "gwt_rpc/response/reader"
 
 require "gwt_rpc/base_extensions/array"
 require "gwt_rpc/base_extensions/boolean"
+require "gwt_rpc/base_extensions/date"
+require "gwt_rpc/base_extensions/float"
 require "gwt_rpc/base_extensions/hash"
 require "gwt_rpc/base_extensions/multipart_string"
+require "gwt_rpc/base_extensions/fixnum"
 require "gwt_rpc/base_extensions/string"
 
 require "gwt_rpc/gxt/hash"

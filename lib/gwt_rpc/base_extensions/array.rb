@@ -3,10 +3,12 @@ module GwtRpc::BaseExtensions::Array
     size = reader.read_int
 
     obj = new
-    size.times do
+    size.times do |i|
+      # puts "starting array item #{i+1} of #{size}"
       obj << reader.read_object
+      # puts "finished array item #{i+1} of #{size}"
     end
-
+    # puts "!!! done with array of size #{size}"
     obj
   end
 end

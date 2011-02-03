@@ -13,6 +13,10 @@ describe GwtRpc::Procedure do
     it "should succeed when all valid keys are provided" do
       lambda{GwtRpc::Procedure.new(required_options)}.should_not raise_error
     end
+    
+    it "should only require a :path if a block is provided" do
+      lambda{ GwtRpc::Procedure.new(:path => '/hello/world'){ "abc" } }.should_not raise_error
+    end
   end
   
   describe ".call" do

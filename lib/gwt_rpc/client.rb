@@ -30,8 +30,8 @@ class GwtRpc::Client
     @class_map[klass.to_s]
   end
   
-  def self.add_procedure(name, options)
-    procedures[name] = GwtRpc::Procedure.new(options)
+  def self.add_procedure(name, options, &block)
+    procedures[name] = GwtRpc::Procedure.new(options, &block)
     
     define_method name do |*parameters|
       self.class.procedures[name].call(self, *parameters)
@@ -55,7 +55,10 @@ class GwtRpc::Client
   
   map_classes "java.lang.String"                                  => "String",
               "java.util.ArrayList"                               => "Array",
+              "java.util.Date"                                    => "Date",
+              "java.lang.Long"                                    => "Float",
               "java.util.HashMap"                                 => "Hash",
+              "java.lang.Integer"                                 => "Fixnum",
               "java.lang.Boolean"                                 => "GwtRpc::BaseExtensions::Boolean",
               "[Ljava.lang.String;"                               => "GwtRpc::BaseExtensions::MultipartString",
               "com.extjs.gxt.ui.client.data.RpcMap"               => "GwtRpc::Gxt::Hash",

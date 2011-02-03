@@ -5,7 +5,7 @@ describe GwtRpc::BaseExtensions::MultipartString do
     it "should combine multiple strings" do
       client = GwtRpc::Client.new
       reader = GwtRpc::Response::Reader.new(client, '[3,2,1,3,["a","b","c"],0,5]')
-      GwtRpc::BaseExtensions::MultipartString.gwt_deserialize(reader).should == "abc"
+      GwtRpc::BaseExtensions::MultipartString.gwt_deserialize(reader).should == ["a","b","c"]
     end
   end
 end

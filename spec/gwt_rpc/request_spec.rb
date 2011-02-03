@@ -7,7 +7,7 @@ describe GwtRpc::Request do
     @client = GwtRpc::Client.new
     @procedure = GwtRpc::Procedure.new(:namespace => "foo.bar", :method => "hello_you", :path => '/hello', :identifier => "abc")
     @parameters = ["Andrew"]
-    @request = GwtRpc::Request.new(@client, @procedure, *@parameters)
+    @request = GwtRpc::Request.new(@client, :procedure => @procedure, :parameters => @parameters)
   end
   
   describe ".url" do
@@ -40,6 +40,11 @@ describe GwtRpc::Request do
   describe ".body" do
     it "should be the header, the size of the string table, the string table, then the payload, separated by pipes" do
       @request.body.should == "5|0|6|http://www.example.com/js|abc|foo.bar|hello_you|java.lang.String|Andrew|1|2|3|4|1|5|6|"
+    end
+    
+    it "should be the passed body if one is passed" do
+      request = GwtRpc::Request.new(@client, :procedure => @procedure, :body => "FOO BAR BAZ")
+      request.body.should == "FOO BAR BAZ"
     end
   end
   

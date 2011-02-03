@@ -1,17 +1,24 @@
 class GwtRpc::Request
-  def initialize(client, procedure, *parameters)
+  def initialize(client, options = {})
     @client = client
-    @procedure = procedure
-    @parameters = parameters.to_a
+    @procedure = options[:procedure]
+    @parameters = options[:parameters]
+    @body = options[:body]
   end
   
   def call
-    response = Typhoeus::Request.post(url,
-          :body          => body,
-          :headers       => {'Content-Type' => "text/x-gwt-rpc; charset=utf-8"},
-          :timeout       => 1000,
-          :cache_timeout => 60)
-    GwtRpc::Response.new(@procedure, @client, response).content
+    10.times do
+      begin
+        response = Typhoeus::Request.post(url,
+              :body          => body,
+              :headers       => {'Content-Type' => "text/x-gwt-rpc; charset=utf-8"},
+              :timeout       => 1000,
+              :cache_timeout => 60)
+        return GwtRpc::Response.new(@client, response).content
+      rescue GwtRpc::Error::NoResponse
+        # prevent random hiccups
+      end
+    end
   end
   
   def url
@@ -23,8 +30,12 @@ class GwtRpc::Request
   end
   
   def body
-    string_table, payload = stringtablize(data)
-    (header + [string_table.size] + string_table + payload).join("|")  + "|"
+    if @body
+      body = @body
+    else
+      string_table, payload = stringtablize(data)
+      body = (header + [string_table.size] + string_table + payload).join("|")  + "|"
+    end
   end
   
   def data
