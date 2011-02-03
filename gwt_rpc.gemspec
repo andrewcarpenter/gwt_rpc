@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gwt_rpc}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrew Carpenter"]
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "gwt_rpc.gemspec",
     "lib/gwt_rpc.rb",
     "lib/gwt_rpc/base_extensions/array.rb",
     "lib/gwt_rpc/base_extensions/boolean.rb",
@@ -96,7 +97,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_runtime_dependency(%q<typhoeus>, [">= 0"])
-      s.add_runtime_dependency(%q<active_support>, [">= 0"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["> 1.2.3"])
     else
@@ -108,7 +109,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<typhoeus>, [">= 0"])
-      s.add_dependency(%q<active_support>, [">= 0"])
+      s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<rspec>, ["> 1.2.3"])
     end
@@ -121,7 +122,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
     s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<typhoeus>, [">= 0"])
-    s.add_dependency(%q<active_support>, [">= 0"])
+    s.add_dependency(%q<activesupport>, [">= 0"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<rspec>, ["> 1.2.3"])
   end
