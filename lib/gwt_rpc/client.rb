@@ -13,7 +13,14 @@ class GwtRpc::Client
     @js_url
   end
   
-  delegate :domain, :js_url, :to => "self.class"
+  def self.gwt_permutation(permutation = nil)
+    if permutation
+      @gwt_permutation = permutation
+    end
+    @gwt_permutation
+  end
+  
+  delegate :domain, :js_url, :gwt_permutation, :to => "self.class"
   
   def self.map_classes(mapping)
     @class_map ||= {}

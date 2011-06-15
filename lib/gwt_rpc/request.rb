@@ -11,7 +11,11 @@ class GwtRpc::Request
       begin
         response = Typhoeus::Request.post(url,
               :body          => body,
-              :headers       => {'Content-Type' => "text/x-gwt-rpc; charset=utf-8"},
+              :headers       => {
+                'Content-Type' => "text/x-gwt-rpc; charset=utf-8",
+                'X-GWT-Module-Base' => @client.js_url,
+                'X-GWT-Permutation' => @client.gwt_permutation,
+              },
               :timeout       => 1000,
               :cache_timeout => 60)
         return GwtRpc::Response.new(@client, response).content
