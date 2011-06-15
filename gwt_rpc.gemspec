@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gwt_rpc}
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrew Carpenter"]
-  s.date = %q{2011-02-02}
+  s.date = %q{2011-06-15}
   s.description = %q{Spider Google Web Toolkit sites using ruby}
   s.email = %q{andrew.main@gmail.com}
   s.extra_rdoc_files = [
@@ -65,7 +65,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/andrewcarpenter/gwt_rpc}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.4.2}
+  s.rubygems_version = %q{1.6.2}
   s.summary = %q{Ruby Google Web Toolkit client}
   s.test_files = [
     "spec/gwt_rpc/base_extensions/array_spec.rb",
