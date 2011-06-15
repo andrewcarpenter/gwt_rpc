@@ -34,6 +34,7 @@ class GwtRpc::Response::Reader
     int = read_int
     
     if int < 0
+      puts "reading obj reference (#{int})" if DEBUG
       obj = @objects[-1 - int]
       # if int == -11
       #   puts obj.inspect
@@ -58,6 +59,7 @@ class GwtRpc::Response::Reader
         raise "unknown java class '#{java_class}'"
       end
     elsif int == 0
+      puts "reading obj nil (0)" if DEBUG
       obj = nil
     end
     obj
