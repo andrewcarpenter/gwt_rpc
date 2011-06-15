@@ -4,7 +4,8 @@ class GwtRpc::Response::Reader
   attr_reader :version, :string_table, :data, :objects
   def initialize(client, json_body)
     @client = client
-    (@version, placeholder, @string_table, *@data) = JSON.parse(json_body).reverse
+    true_json = demangle_json_body(json_body)
+    (@version, placeholder, @string_table, *@data) = JSON.parse(true_json).reverse
     @max_prior_string_location = 0
     @objects = []
   end
@@ -73,5 +74,17 @@ class GwtRpc::Response::Reader
     html << "</table>"
     
     html
+  end
+  
+  def demangle_json_body(faux_json)
+    if faux_json.match(/^\[(.+),\[(.+)\],0,7\]$/)
+      data = $1
+      string_table = $2
+      data.gsub!(/'/,'"')
+
+      "[#{data},[#{string_table}],0,7]"
+    else
+      raise "can't demangle"
+    end
   end
 end

@@ -12,9 +12,7 @@ module GwtRpc::BaseExtensions::Float
   
   module ClassMethods
     def gwt_deserialize(reader)
-      ret = reader.read_int.to_f
-      reader.read_int # FIXME: ignoring this for now...
-      ret
+      reader.read_int.to_f
     end
   end
 end

@@ -6,7 +6,6 @@ module GwtRpc::BaseExtensions::Date
   module ClassMethods
     def gwt_deserialize(reader)
       reader.read_int
-      reader.read_int
     end
   end
 end
