@@ -21,6 +21,14 @@ class GwtRpc::Client
     @timeout
   end
 
+  def self.num_attempts(num_attempts = nil)
+    if num_attempts
+      @num_attempts = num_attempts
+    end
+    @num_attempts ||= 10
+    @num_attempts
+  end
+
   def self.gwt_permutation(permutation = nil)
     if permutation
       @gwt_permutation = permutation
@@ -28,7 +36,7 @@ class GwtRpc::Client
     @gwt_permutation
   end
   
-  delegate :domain, :js_url, :gwt_permutation, :timeout, :to => "self.class"
+  delegate :domain, :js_url, :gwt_permutation, :timeout, :num_attempts, :to => "self.class"
   
   def self.map_classes(mapping)
     @class_map ||= {}

@@ -7,7 +7,7 @@ class GwtRpc::Request
   end
   
   def call
-    10.times do
+    @client.num_attempts.times do
       begin
         response = Typhoeus::Request.post(url,
               :body          => body,
@@ -23,6 +23,7 @@ class GwtRpc::Request
         # prevent random hiccups
       end
     end
+    return nil
   end
   
   def url
