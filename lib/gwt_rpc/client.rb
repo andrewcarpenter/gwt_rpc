@@ -17,7 +17,7 @@ class GwtRpc::Client
     if timeout
       @timeout = timeout
     end
-    @timeout ||= 10
+    @timeout ||= 1000
     @timeout
   end
 
