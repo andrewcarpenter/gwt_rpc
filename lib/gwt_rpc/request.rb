@@ -16,7 +16,7 @@ class GwtRpc::Request
                 'X-GWT-Module-Base' => @client.js_url,
                 'X-GWT-Permutation' => @client.gwt_permutation,
               },
-              :timeout       => 1000,
+              :timeout       => @client.timeout,
               :cache_timeout => 60)
         return GwtRpc::Response.new(@client, response).content
       rescue GwtRpc::Error::NoResponse

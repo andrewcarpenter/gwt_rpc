@@ -13,6 +13,14 @@ class GwtRpc::Client
     @js_url
   end
   
+  def self.timeout(timeout = nil)
+    if timeout
+      @timeout = timeout
+    end
+    @timeout ||= 10
+    @timeout
+  end
+
   def self.gwt_permutation(permutation = nil)
     if permutation
       @gwt_permutation = permutation
@@ -20,7 +28,7 @@ class GwtRpc::Client
     @gwt_permutation
   end
   
-  delegate :domain, :js_url, :gwt_permutation, :to => "self.class"
+  delegate :domain, :js_url, :gwt_permutation, :timeout, :to => "self.class"
   
   def self.map_classes(mapping)
     @class_map ||= {}
@@ -56,7 +64,8 @@ class GwtRpc::Client
   def self.inherited(subclass)
     subclass.domain     self.domain
     subclass.js_url     self.js_url
-    
+    subclass.timeout    self.timeout
+
     subclass.map_classes @class_map
   end
   
